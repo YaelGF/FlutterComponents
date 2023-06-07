@@ -6,12 +6,12 @@ class AppRoutes {
   static const initialRoute = "/home";
 
   static  final menuOption = <MenuOption>[
-    MenuOption(
+    /*MenuOption(
       route: "/home",
       icon: Icons.home,
       name: "Home Screen",
       screen: const HomeScreen(),
-    ),
+    ),*/
     MenuOption(
       route: "/listview",
       icon: Icons.list,
@@ -51,7 +51,9 @@ class AppRoutes {
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
+
     Map<String, Widget Function(BuildContext)> appRoutes = {};
+    appRoutes.addAll({initialRoute: (_) => const HomeScreen()});
 
     for (final element in menuOption) {
       appRoutes.addAll({element.route: (_) => element.screen});
@@ -70,14 +72,7 @@ class AppRoutes {
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     return MaterialPageRoute(
-      builder: (_) => Scaffold(
-        appBar: AppBar(
-          title: const Text('Page not found'),
-        ),
-        body: const Center(
-          child: Text('Page not found'),
-        ),
-      ),
+      builder: (_) => const AlertScreen()
     );
   }
 }

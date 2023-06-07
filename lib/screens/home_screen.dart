@@ -6,10 +6,12 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-      final menuOption = AppRoutes.menuOption;
+    final menuOption = AppRoutes.menuOption;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Components App'),
+        automaticallyImplyLeading: false,
       ),
       body: ListView.separated(
           itemBuilder: (context, index) => ListTile(
