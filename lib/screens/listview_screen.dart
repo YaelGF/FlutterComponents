@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fl_components/theme/theme.dart';
+import 'package:flutter_components/theme/theme.dart';
 
 
 class ListViewScreen extends StatelessWidget {
