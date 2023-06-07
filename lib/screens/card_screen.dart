@@ -1,5 +1,5 @@
-import 'package:fl_components/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_components/widgets/widgets.dart';
 
 class CardScreen extends StatelessWidget {
   const CardScreen({Key? key}) : super(key: key);
