@@ -42,7 +42,7 @@ class InputsScreen extends StatelessWidget {
                     ),
                     labelText: "Opciones",
                     hintText: "Seleccione una opcion",
-                    icon: Icon(Icons.list)
+                    icon: const Icon(Icons.list)
                   ),
                   items: const[
                     DropdownMenuItem(value: "Admin", child: Text("Administrador")),
@@ -60,13 +60,10 @@ class InputsScreen extends StatelessWidget {
 
                 ElevatedButton(onPressed: (){
                   if (!formKey.currentState!.validate()){
-                    print("Formulario invalido");
                     return;
                   }
 
                   formKey.currentState!.save();
-
-                  print(formData);
                 }, 
                   child: SizedBox(
                     width: double.infinity,

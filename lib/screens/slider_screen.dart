@@ -9,57 +9,77 @@ class SliderScreen extends StatefulWidget {
 }
 
 class _SliderScreenState extends State<SliderScreen> {
-
   double _sliderValueWidth = 100;
-  double _sliderValueHeight = 400;
+  bool _sliderValue = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Slider & Checks')
-      ),
-      body: SingleChildScrollView(
-        child: Column(
+        appBar: AppBar(title: const Text('Slider & Checks')),
+        body: Column(
           children: [
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Slider.adaptive(
               min: 10,
               max: 400,
               activeColor: AppTheme.primaryColor,
               inactiveColor: AppTheme.primaryColor.withOpacity(0.5),
-              value: _sliderValueWidth, 
+              value: _sliderValueWidth,
+              onChanged: _sliderValue
+                  ? (value) {
+                      _sliderValueWidth = value;
+                      setState(() {});
+                    }
+                  : null,
+            ),
+            Checkbox(
+              value: _sliderValue,
               onChanged: (value) {
-                _sliderValueWidth = value;
+                _sliderValue = value ?? true;
                 setState(() {});
-              }
-              ),
-              const SizedBox(height: 20,),
-              Slider(
-                value: _sliderValueHeight, 
-                min: 10,
-                max: 700,
-                activeColor: AppTheme.primaryColor,
-                inactiveColor: AppTheme.primaryColor.withOpacity(0.5),
-                divisions: 400,
-                label: _sliderValueHeight.toStringAsFixed(0),
+              },
+            ),
+            CheckboxListTile(
+              activeColor: AppTheme.primaryColor,
+              value: _sliderValue,
+              onChanged: (value) {
+                _sliderValue = value ?? true;
+                setState(() {});
+              },
+              title: const Text('Check Box List Tile'),
+            ),
+            Switch(
+                value: _sliderValue,
                 onChanged: (value) {
-                  _sliderValueHeight = value;
+                  _sliderValue = value;
                   setState(() {});
-                }
+                }),
+            SwitchListTile.adaptive(
+              activeColor: AppTheme.primaryColor,
+              value: _sliderValue,
+              onChanged: (value) {
+                _sliderValue = value ?? true;
+                setState(() {});
+              },
+              title: const Text('Switch List Tile'),
+            ),
+            const AboutListTile(),
+            const SizedBox(
+              height: 50,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Image(
+                  image: const NetworkImage(
+                      'https://cdn.pixabay.com/photo/2020/08/29/16/08/pikachu-5527379_1280.jpg'),
+                  fit: BoxFit.contain,
+                  width: _sliderValueWidth,
+                ),
               ),
-              const SizedBox(height: 20,),
-              Image(
-                image:  NetworkImage('https://cdn.pixabay.com/photo/2020/08/29/16/08/pikachu-5527379_1280.jpg'),
-                fit: BoxFit.contain,
-                width: _sliderValueWidth,
-                height: _sliderValueHeight,
-              ),
-              const SizedBox(height: 50,),
-      
+            ),
           ],
-        ),
-      )
-    );
+        ));
   }
 }
