@@ -5,7 +5,7 @@ import '../screens/screens.dart';
 class AppRoutes {
   static const initialRoute = "/home";
 
-  static  final menuOption = <MenuOption>[
+  static final menuOption = <MenuOption>[
     /*MenuOption(
       route: "/home",
       icon: Icons.home,
@@ -37,33 +37,33 @@ class AppRoutes {
       screen: const CardScreen(),
     ),
     MenuOption(
-      route: "/avatar", 
-      icon: Icons.supervised_user_circle_outlined, 
-      name: "Avatar Screen", 
-      screen: const AvatarScreen()
-    ),
+        route: "/avatar",
+        icon: Icons.supervised_user_circle_outlined,
+        name: "Avatar Screen",
+        screen: const AvatarScreen()),
     MenuOption(
-      route: "/animated", 
-      icon: Icons.animation, 
-      name: "Animated Screen", 
-      screen: const AnimatedScreen()
-    ),
+        route: "/animated",
+        icon: Icons.animation,
+        name: "Animated Screen",
+        screen: const AnimatedScreen()),
     MenuOption(
-      route: "/inpunts", 
-      icon: Icons.input_outlined, 
-      name: "inputs Screen", 
-      screen: const InputsScreen()
-    ),
+        route: "/inpunts",
+        icon: Icons.input_outlined,
+        name: "inputs Screen",
+        screen: const InputsScreen()),
     MenuOption(
-      route: "/slider", 
-      icon: Icons.slideshow_outlined, 
-      name: "Slider && Checks Screen", 
-      screen: const SliderScreen()
-    ),
+        route: "/slider",
+        icon: Icons.slideshow_outlined,
+        name: "Slider && Checks Screen",
+        screen: const SliderScreen()),
+    MenuOption(
+        route: "/builder",
+        icon: Icons.build_circle_outlined,
+        name: "ListView Builder",
+        screen: const ListViewBuilderScreen()),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
-
     Map<String, Widget Function(BuildContext)> appRoutes = {};
     appRoutes.addAll({initialRoute: (_) => const HomeScreen()});
 
@@ -83,8 +83,6 @@ class AppRoutes {
   };*/
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    return MaterialPageRoute(
-      builder: (_) => const AlertScreen()
-    );
+    return MaterialPageRoute(builder: (_) => const AlertScreen());
   }
 }

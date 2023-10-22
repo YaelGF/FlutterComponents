@@ -60,7 +60,7 @@ class _SliderScreenState extends State<SliderScreen> {
               activeColor: AppTheme.primaryColor,
               value: _sliderValue,
               onChanged: (value) {
-                _sliderValue = value ?? true;
+                _sliderValue = value;
                 setState(() {});
               },
               title: const Text('Switch List Tile'),
