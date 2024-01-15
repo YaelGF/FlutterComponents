@@ -73,7 +73,7 @@ class _SliderScreenState extends State<SliderScreen> {
               child: SingleChildScrollView(
                 child: Image(
                   image: const NetworkImage(
-                      'https://cdn.pixabay.com/photo/2020/08/29/16/08/pikachu-5527379_1280.jpg'),
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgX5quAr6a2rolZwoJoD8w77tvJjBqF-sZ_Q&usqp=CAU'),
                   fit: BoxFit.contain,
                   width: _sliderValueWidth,
                 ),
