@@ -9,7 +9,6 @@ class ListViewBuilderScreen extends StatefulWidget {
 }
 
 class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
-
   final List<int> iamgsIds = List.generate(10, (index) => index + 1);
   final ScrollController scrollController = ScrollController();
   bool isLoading = false;
@@ -26,16 +25,21 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
     });
   }
 
-Future fetchData() async {
+  Future fetchData() async {
     if (isLoading) return;
     isLoading = true;
     setState(() {});
-    await Future.delayed(const Duration(seconds:2));
+    await Future.delayed(const Duration(seconds: 2));
 
     add10items();
     isLoading = false;
     setState(() {});
-}
+    if (scrollController.position.pixels + 100 <= scrollController.position.maxScrollExtent) return;
+      scrollController.animateTo(
+        scrollController.position.pixels + 120,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.fastOutSlowIn);
+  }
 
   void add10items() {
     final lastId = iamgsIds.last;
@@ -45,7 +49,6 @@ Future fetchData() async {
 
   @override
   Widget build(BuildContext context) {
-
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -70,11 +73,12 @@ Future fetchData() async {
                         'https://picsum.photos/500/300?image=${iamgsIds[index]}'));
               },
             ),
-            Positioned(
-              bottom: 40,
-              left: size.width / 2 - 30,
-              child: const _LoadingIcon(),
-            )
+            if (isLoading)
+              Positioned(
+                bottom: 40,
+                left: size.width / 2 - 30,
+                child: const _LoadingIcon(),
+              )
           ],
         ),
       ),
@@ -94,12 +98,13 @@ class _LoadingIcon extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.5),
         shape: BoxShape.circle,
-
       ),
       height: 60,
       width: 60,
       child: const Center(
-        child: CircularProgressIndicator(color: AppTheme.primaryColor,),
+        child: CircularProgressIndicator(
+          color: AppTheme.primaryColor,
+        ),
       ),
     );
   }
